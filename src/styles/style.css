@@ -1,0 +1,19 @@
+body {
+  font-family: 'Rethink Sans', sans-serif;
+}
+
+ul.nav .nav-link {
+  color: rgba(0, 0, 0, 0.65);
+}
+
+ul.nav .nav-link:hover {
+  color: rgba(0, 0, 0, 0.9);
+}
+
+time {
+  font-size: 0.9em;
+}
+
+.card-body h2 {
+  margin-bottom: 0;
+}

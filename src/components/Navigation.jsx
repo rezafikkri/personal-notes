@@ -5,7 +5,7 @@ export default function Navigation() {
     <header className="d-flex justify-content-between align-items-center pb-3 mb-5 border-bottom">
       <Link
         to="/"
-        className="d-flex align-items-center text-body-emphasis text-decoration-none fs-4 fw-semibold"
+        className="d-flex align-items-center text-dark-emphasis text-decoration-none fs-4 fw-semibold"
       >
         Aplikasi Catatan
       </Link>

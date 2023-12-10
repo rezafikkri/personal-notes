@@ -11,10 +11,10 @@ export default function Navigation() {
       </Link>
       <ul className="nav">
         <li className="nav-item">
-          <Link className="nav-link" href="/archives">Arsip</Link>
+          <Link className="nav-link" to="/archives">Arsip</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" href="/notes/new">Buat Catatan</Link>
+          <Link className="nav-link" to="/notes/new">Buat Catatan</Link>
         </li>
       </ul>
     </header>

@@ -9,6 +9,7 @@ import "./styles/style.css";
 import RootLayout from "./RootLayout";
 import HomePage from './pages/HomePage';
 import DetailPage from './pages/DetailPage';
+import AddPage from './pages/AddPage';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: "notes/:id",
         element: <DetailPage />
+      },
+      {
+        path: "notes/new",
+        element: <AddPage />
       }
     ],
   },

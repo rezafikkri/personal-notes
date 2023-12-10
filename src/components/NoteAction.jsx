@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function NoteAction({ id }) {
   return (
     <div className="px-3 pb-3">
@@ -8,3 +10,7 @@ export default function NoteAction({ id }) {
     </div>
   );
 }
+
+NoteAction.propTypes = {
+  id: PropTypes.string.isRequired
+};

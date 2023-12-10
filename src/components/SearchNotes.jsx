@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function SearchNotes({ keyword, onKeywordChange }) {
   return (
     <input
@@ -9,3 +11,8 @@ export default function SearchNotes({ keyword, onKeywordChange }) {
     />
   );
 }
+
+SearchNotes.propTypes = {
+  keyword: PropTypes.string,
+  onKeywordChange: PropTypes.func.isRequired
+};

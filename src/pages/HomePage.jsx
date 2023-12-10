@@ -3,6 +3,7 @@ import SearchNotes from "../components/SearchNotes";
 import NoteList from "../components/NoteList";
 import { getAllNotes } from "../utils/local-data";
 import { useSearchParams } from "react-router-dom";
+import PropTypes from "prop-types";
 
 export default function HomePageWarapper() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -11,7 +12,7 @@ export default function HomePageWarapper() {
     setSearchParams({ keyword });
   }
 
-  return <HomePage keyword={searchParams.get("keyword")} keywordChange={keywordChange} />
+  return <HomePage defaultKeyword={searchParams.get("keyword")} keywordChange={keywordChange} />
 }
 
 class HomePage extends React.Component {
@@ -20,7 +21,7 @@ class HomePage extends React.Component {
 
     this.state = {
       notes: getAllNotes(),
-      keyword: props.keyword ?? ''
+      keyword: props.defaultKeyword ?? ''
     };
 
     this.handleKeywordChange = this.handleKeywordChange.bind(this);
@@ -47,3 +48,8 @@ class HomePage extends React.Component {
     );
   }
 }
+
+HomePage.propTypes = {
+  defaultKeyword: PropTypes.string,
+  keywordChange: PropTypes.func.isRequired
+};

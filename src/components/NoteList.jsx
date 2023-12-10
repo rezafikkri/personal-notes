@@ -1,4 +1,5 @@
 import NoteItem from "./NoteItem";
+import PropTypes from "prop-types";
 
 export default function NoteList({ notes }) {
   if (notes.length > 0) {
@@ -16,3 +17,7 @@ export default function NoteList({ notes }) {
     return <p className="text-body-secondary text-center">Tidak ada catatan</p>;
   }
 }
+
+NoteList.propTypes = {
+  notes: PropTypes.arrayOf(PropTypes.object).isRequired
+};

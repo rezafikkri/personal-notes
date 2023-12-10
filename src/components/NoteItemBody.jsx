@@ -1,4 +1,6 @@
 import { showFormattedDate } from "../utils";
+import PropTypes from "prop-types";
+
 
 export default function NoteItemBody({ title, body, createdAt }) {
   const bodyCountChr = body.length;
@@ -12,3 +14,9 @@ export default function NoteItemBody({ title, body, createdAt }) {
     </div>
   );
 }
+
+NoteItemBody.propTypes = {
+  title: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired
+};

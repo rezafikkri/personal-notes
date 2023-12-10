@@ -8,6 +8,7 @@ import {
 import "./styles/style.css";
 import RootLayout from "./RootLayout";
 import HomePage from './pages/HomePage';
+import DetailPage from './pages/DetailPage';
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       { index: true, element: <HomePage /> },
+      {
+        path: "notes/:id",
+        element: <DetailPage />
+      }
     ],
   },
 ]);

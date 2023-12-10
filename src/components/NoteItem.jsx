@@ -6,7 +6,7 @@ export default function NoteItem({ id, title, body, createdAt, onDelete }) {
   return (
     <div className="col-lg-6">
       <div className="card">
-        <NoteItemBody title={title} body={body} createdAt={createdAt} />
+        <NoteItemBody id={id} title={title} body={body} createdAt={createdAt} />
         <NoteAction id={id} onDelete={onDelete} />
       </div>
     </div> 

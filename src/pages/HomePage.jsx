@@ -27,18 +27,11 @@ class HomePage extends React.Component {
     };
 
     this.handleKeywordChange = this.handleKeywordChange.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleKeywordChange(keyword) {
     this.setState({ keyword });
     this.props.keywordChange(keyword);
-  }
-
-  handleDelete(id) {
-    deleteNote(id);
-
-    this.setState({ notes: getActiveNotes() });
   }
 
   render() {
@@ -47,7 +40,7 @@ class HomePage extends React.Component {
         <h1 className="fw-bold">Catatan Aktif</h1>
         <SearchNotes keyword={this.state.keyword} onKeywordChange={this.handleKeywordChange} />
         <hr className="col-3 col-md-2 mb-5"/>
-        <NoteList notes={this.state.notes} onDelete={this.handleDelete} />
+        <NoteList notes={this.state.notes} />
       </>
     );
   }

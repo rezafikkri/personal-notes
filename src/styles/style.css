@@ -31,3 +31,7 @@ article.detail-page a:hover {
 article.detail-page p {
   font-size: 18px;
 }
+
+main svg {
+  vertical-align: bottom !important;
+}

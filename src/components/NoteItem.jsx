@@ -1,13 +1,19 @@
-import NoteAction from "./NoteAction";
-import NoteItemBody from "./NoteItemBody";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { showFormattedDate } from "../utils";
 
-export default function NoteItem({ id, title, body, createdAt, onDelete }) {
+export default function NoteItem({ id, title, body, createdAt }) {
+  const bodyCountChr = body.length;
+  const dots = bodyCountChr <= 80 ? '' : '...';
+
   return (
     <div className="col-lg-6">
       <div className="card">
-        <NoteItemBody id={id} title={title} body={body} createdAt={createdAt} />
-        <NoteAction id={id} onDelete={onDelete} />
+        <div className="card-body">
+          <h2 className="fs-4"><Link to={`/notes/${id}`} className="text-body">{title}</Link></h2>
+          <time className="text-body-secondary" dateTime={createdAt}>{showFormattedDate(createdAt)}</time>
+          <p className="mt-3">{body.substr(0, 80) + dots}</p>
+        </div>
       </div>
     </div> 
   );
@@ -18,5 +24,4 @@ NoteItem.propTypes = {
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
-  onDelete: PropTypes.func.isRequired
 };

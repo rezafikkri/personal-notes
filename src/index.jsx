@@ -10,6 +10,7 @@ import RootLayout from "./RootLayout";
 import HomePage from './pages/HomePage';
 import DetailPage from './pages/DetailPage';
 import AddPage from './pages/AddPage';
+import ArchivePage from './pages/ArchivePage';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "notes/new",
         element: <AddPage />
+      },
+      {
+        path: "archives",
+        element: <ArchivePage />
       }
     ],
   },

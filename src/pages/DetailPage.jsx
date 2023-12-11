@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { archiveNote, deleteNote, getNote } from "../utils/local-data";
+import { archiveNote, deleteNote, getNote, unarchiveNote } from "../utils/local-data";
 import React from "react";
 import PropTypes from "prop-types";
 import DetailBody from "../components/DetailBody";
@@ -19,6 +19,7 @@ class DetailPage extends React.Component {
 
     this.handleDelete = this.handleDelete.bind(this);
     this.handleArchive = this.handleArchive.bind(this);
+    this.handleUnarchive = this.handleUnarchive.bind(this);
   }
 
   handleDelete(id) {
@@ -29,6 +30,11 @@ class DetailPage extends React.Component {
   handleArchive(id) {
     archiveNote(id);
     this.props.navigate("/");
+  }
+
+  handleUnarchive(id) {
+    unarchiveNote(id);
+    this.props.navigate("/archives");
   }
 
   render() {
@@ -43,6 +49,8 @@ class DetailPage extends React.Component {
           id={this.props.note.id}
           onDelete={this.handleDelete}
           onArchive={this.handleArchive}
+          onUnarchive={this.handleUnarchive}
+          archived={this.props.note.archived}
         />
       </article>
     );

@@ -1,10 +1,20 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Icon from '@mdi/react';
-import { mdiArchiveArrowDown, mdiArrowLeftThick, mdiDelete } from '@mdi/js';
+import { mdiArchiveArrowDown, mdiArchiveArrowUp, mdiArrowLeftThick, mdiDelete } from '@mdi/js';
 import ActionButton from "./ActionButton";
 
-export default function DetailNoteAction({ id, onDelete, onArchive }) {
+export default function DetailNoteAction({ id, onDelete, onArchive, onUnarchive, archived }) {
+  // Determine the buttons displayed based on the active or archived note page
+  let onArchiveAction = onArchive;
+  let archiveIcon = mdiArchiveArrowDown;
+  let archiveTitle = "Arsip catatan";
+  if (archived) {
+    onArchiveAction = onUnarchive;
+    archiveIcon = mdiArchiveArrowUp;
+    archiveTitle = "Batalkan arsip";
+  }
+
   return (
     <div className="position-fixed d-flex flex-column bottom-0 end-0 p-5">
       <Link to="/" className="btn btn-sm btn-outline-secondary mb-2" title="Kembali ke Home">
@@ -12,10 +22,10 @@ export default function DetailNoteAction({ id, onDelete, onArchive }) {
       </Link>
       <ActionButton
         id={id}
-        onClick={onArchive}
+        onClick={onArchiveAction}
         btnClass="btn-outline-secondary mb-5"
-        iconPath={mdiArchiveArrowDown}
-        title="Arsip catatan"
+        iconPath={archiveIcon}
+        title={archiveTitle}
       />
       <ActionButton
         id={id}
@@ -31,5 +41,7 @@ export default function DetailNoteAction({ id, onDelete, onArchive }) {
 DetailNoteAction.propTypes = {
   id: PropTypes.string.isRequired,
   onDelete: PropTypes.func.isRequired,
-  onArchive: PropTypes.func.isRequired
+  onArchive: PropTypes.func.isRequired,
+  onUnarchive: PropTypes.func.isRequired,
+  archived: PropTypes.bool.isRequired
 };

@@ -8,4 +8,10 @@ const showFormattedDate = (date) => {
   return new Date(date).toLocaleDateString('id-ID', options);
 };
 
-export { showFormattedDate };
+function getPageName(location) {
+  const arr = location.pathname.split('/');
+  return arr[1];
+  
+}
+
+export { showFormattedDate, getPageName };

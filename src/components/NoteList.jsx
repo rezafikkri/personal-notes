@@ -1,7 +1,15 @@
+import { useLocation } from "react-router-dom";
 import NoteItem from "./NoteItem";
 import PropTypes from "prop-types";
+import { getPageName } from "../utils";
 
 export default function NoteList({ notes }) {
+  const location = useLocation();
+  const pageName = getPageName(location);
+  // message for if not found notes data
+  let msg = "aktif";
+  if (pageName == "archives") msg = "arsip";
+
   if (notes.length > 0) {
     return (
       <div className="row g-3 align-self-stretch">
@@ -14,7 +22,7 @@ export default function NoteList({ notes }) {
       </div>
     );
   } else {
-    return <p className="text-body-secondary text-center">Tidak ada catatan</p>;
+    return <p className="text-body-secondary text-center">Tidak ada catatan {msg}</p>;
   }
 }
 

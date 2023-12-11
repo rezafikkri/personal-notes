@@ -30,7 +30,10 @@ class HomePage extends React.Component {
   }
 
   handleKeywordChange(keyword) {
-    this.setState({ keyword });
+    this.setState({
+      notes: getActiveNotes(keyword),
+      keyword
+    });
     this.props.keywordChange(keyword);
   }
 

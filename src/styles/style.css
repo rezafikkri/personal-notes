@@ -18,13 +18,11 @@ time {
   margin-bottom: 0;
 }
 
-.card-body h2 a,
-article.detail-page a {
+.card-body h2 a {
   text-decoration: none;
 }
 
-.card-body h2 a:hover,
-article.detail-page a:hover {
+.card-body h2 a:hover {
   text-decoration: underline;
 }
 

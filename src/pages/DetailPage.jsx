@@ -24,7 +24,12 @@ class DetailPage extends React.Component {
 
   handleDelete(id) {
     deleteNote(id);
-    this.props.navigate("/");
+    // if determine navigate based on note deleted is archive or active note
+    if (this.props.note.archived) {
+      this.props.navigate("/archives");
+    } else {
+      this.props.navigate("/");
+    }
   }
 
   handleArchive(id) {

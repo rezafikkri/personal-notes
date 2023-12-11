@@ -43,22 +43,24 @@ let notes = [
   },
 ];
 
-function getAllNotes() {
-  return notes;
-}
-
 function getNote(id) {
   const foundedNote = notes.find((note) => note.id === id);
   return foundedNote;
 }
 
-function getActiveNotes() {
-  const activeNotes = notes.filter((note) => !note.archived);
+function getActiveNotes(keyword) {
+  const activeNotes = notes.filter(note => {
+    const lowerKeyword = keyword.toLowerCase();
+    return note.title.toLowerCase().includes(lowerKeyword) && !note.archived;
+  });
   return activeNotes;
 }
 
-function getArchivedNotes() {
-  const archivedNotes = notes.filter((note) => note.archived);
+function getArchivedNotes(keyword) {
+  const archivedNotes = notes.filter(note => {
+    const lowerKeyword = keyword.toLowerCase();
+    return note.title.toLowerCase().includes(lowerKeyword) && note.archived;
+  });
   return archivedNotes;
 }
 
@@ -105,7 +107,6 @@ function editNote({ id, title, body }) {
 }
 
 export {
-  getAllNotes,
   getActiveNotes,
   getArchivedNotes,
   deleteNote,

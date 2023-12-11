@@ -1,7 +1,7 @@
 import React from "react";
 import SearchNotes from "../components/SearchNotes";
 import NoteList from "../components/NoteList";
-import { deleteNote, getAllNotes } from "../utils/local-data";
+import { deleteNote, getActiveNotes } from "../utils/local-data";
 import { useSearchParams } from "react-router-dom";
 import PropTypes from "prop-types";
 
@@ -19,9 +19,11 @@ class HomePage extends React.Component {
   constructor(props) {
     super(props);
 
+    const defaultKeyword = props.defaultKeyword ?? '';
+
     this.state = {
-      notes: getAllNotes(),
-      keyword: props.defaultKeyword ?? ''
+      notes: getActiveNotes(defaultKeyword),
+      keyword: defaultKeyword
     };
 
     this.handleKeywordChange = this.handleKeywordChange.bind(this);
@@ -36,21 +38,16 @@ class HomePage extends React.Component {
   handleDelete(id) {
     deleteNote(id);
 
-    this.setState({ notes: getAllNotes() });
+    this.setState({ notes: getActiveNotes() });
   }
 
   render() {
-    const notes = this.state.notes.filter(note => {
-      const keyword = this.state.keyword.toLowerCase();
-      return note.title.toLowerCase().includes(keyword) && !note.archived;
-    });
-
     return (
       <>
         <h1 className="fw-bold">Catatan Aktif</h1>
         <SearchNotes keyword={this.state.keyword} onKeywordChange={this.handleKeywordChange} />
         <hr className="col-3 col-md-2 mb-5"/>
-        <NoteList notes={notes} onDelete={this.handleDelete} />
+        <NoteList notes={this.state.notes} onDelete={this.handleDelete} />
       </>
     );
   }

@@ -1,5 +1,6 @@
 import { showFormattedDate } from "../utils";
 import PropTypes from "prop-types";
+import parser from "html-react-parser";
 
 export default function DetailNoteBody({ title, body, createdAt }) {
   return (
@@ -11,7 +12,7 @@ export default function DetailNoteBody({ title, body, createdAt }) {
       >
         {showFormattedDate(createdAt)}
       </time>
-      <p className="mt-3 mb-5">{body}</p>
+      <div className="mt-3 mb-5">{parser(body)}</div>
     </>
   );
 }

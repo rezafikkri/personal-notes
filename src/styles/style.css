@@ -33,3 +33,14 @@ article.detail-page p {
 main svg {
   vertical-align: bottom !important;
 }
+
+form [data-placeholder] {
+  overflow: hidden;
+  height: 100px;
+  resize: vertical;
+}
+
+form [data-placeholder]:empty::before {
+  color: rgba(33, 37, 41, 0.75);
+  content: attr(data-placeholder);
+}

@@ -25,7 +25,7 @@ export default class NoteInput extends React.Component {
   }
 
   handleChangeBody(e) {
-    this.setState({ body: e.target.value });
+    this.setState({ body: e.target.innerHTML });
   }
 
   render() {
@@ -38,12 +38,11 @@ export default class NoteInput extends React.Component {
           onChange={this.handleChangeTitle}
           value={this.state.title}
         />
-        <textarea
+        <div
           className="form-control mb-3"
-          placeholder="Isi Catatan..."
-          onChange={this.handleChangeBody}
-          rows={10}
-          value={this.state.body}
+          data-placeholder="Isi Catatan..."
+          contentEditable
+          onInput={this.handleChangeBody}
         />
         <button type="submit" className="btn btn-primary">Simpan</button>
       </form>

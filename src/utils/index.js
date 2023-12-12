@@ -10,8 +10,13 @@ const showFormattedDate = (date) => {
 
 function getPageName(location) {
   const arr = location.pathname.split("/");
-  return arr[1];
-  
+  return arr[1];  
 }
 
-export { showFormattedDate, getPageName };
+function stripHtml(htmlString) {
+   let tmp = document.createElement("DIV");
+   tmp.innerHTML = htmlString;
+   return tmp.textContent || tmp.innerText || "";
+}
+
+export { showFormattedDate, getPageName, stripHtml };

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import Icon from '@mdi/react';
-import { mdiArchiveArrowDown, mdiArchiveArrowUp, mdiArrowLeftThick, mdiDelete } from '@mdi/js';
+import Icon from "@mdi/react";
+import { mdiArchiveArrowDown, mdiArchiveArrowUp, mdiArrowLeftThick, mdiDelete } from "@mdi/js";
 import ActionButton from "./ActionButton";
 
 export default function DetailNoteAction({ id, onDelete, onArchive, onUnarchive, archived }) {

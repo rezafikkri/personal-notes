@@ -7,7 +7,7 @@ export default function AddPage() {
 
   function handleAdd(note) {
     addNote(note);
-    navigate('/');
+    navigate("/");
   }
 
   return (

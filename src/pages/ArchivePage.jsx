@@ -19,7 +19,7 @@ class ArchivePage extends React.Component {
   constructor(props) {
     super(props);
 
-    const defaultKeyword = props.defaultKeyword ?? '';
+    const defaultKeyword = props.defaultKeyword ?? "";
 
     this.state = {
       notes: getArchivedNotes(defaultKeyword),

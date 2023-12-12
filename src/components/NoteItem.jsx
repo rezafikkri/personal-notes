@@ -4,7 +4,7 @@ import { showFormattedDate } from "../utils";
 
 export default function NoteItem({ id, title, body, createdAt }) {
   const bodyCountChr = body.length;
-  const dots = bodyCountChr <= 80 ? '' : '...';
+  const dots = bodyCountChr <= 80 ? "" : "...";
 
   return (
     <div className="col-lg-6">

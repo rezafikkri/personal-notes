@@ -6,8 +6,8 @@ export default class NoteInput extends React.Component {
     super(props);
 
     this.state = {
-      title: '',
-      body: ''
+      title: "",
+      body: ""
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);

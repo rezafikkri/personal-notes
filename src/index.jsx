@@ -1,41 +1,14 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 // styling
 import "./styles/style.css";
 import RootLayout from "./RootLayout";
-import HomePage from './pages/HomePage';
-import DetailPage from './pages/DetailPage';
-import AddPage from './pages/AddPage';
-import ArchivePage from './pages/ArchivePage';
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <RootLayout />,
-    children: [
-      { index: true, element: <HomePage /> },
-      {
-        path: "notes/:id",
-        element: <DetailPage />
-      },
-      {
-        path: "notes/new",
-        element: <AddPage />
-      },
-      {
-        path: "archives",
-        element: <ArchivePage />
-      }
-    ],
-  },
-]);
 
 createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  <StrictMode>
+    <BrowserRouter>
+      <RootLayout />
+    </BrowserRouter>
+  </StrictMode>
 );

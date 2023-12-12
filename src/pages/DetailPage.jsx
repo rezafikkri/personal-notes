@@ -4,11 +4,16 @@ import React from "react";
 import PropTypes from "prop-types";
 import DetailBody from "../components/DetailBody";
 import DetailAction from "../components/DetailAction";
+import PageNotFound from "../components/PageNotFound";
 
 export default function DetailPageWarapper() {
   const { id } = useParams();
   const note = getNote(id);
   const navigate = useNavigate();
+  
+  if (!note) {
+    return <PageNotFound />;
+  }
 
   return <DetailPage note={note} navigate={navigate} />
 }

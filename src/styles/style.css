@@ -32,6 +32,7 @@ article.detail-page p {
 
 @media (max-width: 767.98px) {
   article.detail-page .detail-action {
+    left: 0;
     backdrop-filter: blur(10px);
   }
 }

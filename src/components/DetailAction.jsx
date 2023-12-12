@@ -16,14 +16,14 @@ export default function DetailNoteAction({ id, onDelete, onArchive, onUnarchive,
   }
 
   return (
-    <div className="position-fixed d-flex flex-column bottom-0 end-0 p-5">
-      <Link to="/" className="btn btn-sm btn-outline-secondary mb-2" title="Kembali ke Home">
+    <div className="detail-action position-fixed d-flex flex-md-column bottom-0 end-0 start-md-0 py-3 px-4 p-md-5">
+      <Link to="/" className="btn btn-sm btn-outline-secondary me-2 me-md-0 mb-md-2" title="Kembali ke Home">
         <Icon path={mdiArrowLeftThick} size={0.85} />
       </Link>
       <ActionButton
         id={id}
         onClick={onArchiveAction}
-        btnClass="btn-outline-secondary mb-5"
+        btnClass="btn-outline-secondary me-5 me-md-0 mb-md-5"
         iconPath={archiveIcon}
         title={archiveTitle}
       />

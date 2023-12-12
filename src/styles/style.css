@@ -30,12 +30,18 @@ article.detail-page p {
   font-size: 18px;
 }
 
+@media (max-width: 767.98px) {
+  article.detail-page .detail-action {
+    backdrop-filter: blur(10px);
+  }
+}
+
 main svg {
   vertical-align: bottom !important;
 }
 
 form [data-placeholder] {
-  overflow: hidden;
+  overflow: auto;
   height: 100px;
   resize: vertical;
 }

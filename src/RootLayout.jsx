@@ -9,7 +9,7 @@ import PageNotFound from "./pages/PageNotFound";
 
 export default function RootLayout() {
   return (
-    <div className="col-lg-8 mx-auto p-4 py-md-5">
+    <div className="col-md-8 mx-auto p-4 pb-5 pb-md-0 py-md-5">
       <Navigation />
       <main>
         <Routes>

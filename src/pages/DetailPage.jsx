@@ -4,7 +4,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import DetailBody from "../components/DetailBody";
 import DetailAction from "../components/DetailAction";
-import PageNotFound from "../components/PageNotFound";
+import PageNotFound from "../pages/PageNotFound";
 
 export default function DetailPageWarapper() {
   const { id } = useParams();

@@ -5,7 +5,7 @@ import HomePage from "./pages/HomePage";
 import DetailPage from "./pages/DetailPage";
 import AddPage from "./pages/AddPage";
 import ArchivePage from "./pages/ArchivePage";
-import PageNotFound from "./components/PageNotFound";
+import PageNotFound from "./pages/PageNotFound";
 
 export default function RootLayout() {
   return (

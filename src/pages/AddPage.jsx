@@ -13,7 +13,7 @@ export default function AddPage() {
   return (
     <section>
       <h1>Buat Catatan</h1>
-      <NoteInput onAdd={handleAdd} />
+      <NoteInput onSubmit={handleAdd} />
     </section>
   );
 }

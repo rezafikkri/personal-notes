@@ -10,19 +10,24 @@ import ActionButton from "./ActionButton";
 import ActionLink from "./ActionLink";
 
 export default function DetailNoteAction({ id, onDelete, onArchive, onUnarchive, archived }) {
-  // Determine the buttons displayed based on the active or archived note page
+  /* Determine the buttons displayed and to, title attr link for 'back to',
+  based on the active or archived note page */
   let onArchiveAction = onArchive;
   let archiveIcon = mdiArchiveArrowDown;
   let archiveTitle = "Arsip catatan";
+  let backTo = "/";
+  let backTitle = "Kembali ke Home";
   if (archived) {
     onArchiveAction = onUnarchive;
     archiveIcon = mdiArchiveArrowUp;
     archiveTitle = "Batalkan arsip";
+    backTo = "/archives";
+    backTitle = "Kembali ke Arsip";
   }
 
   return (
     <div className="detail-action position-fixed d-flex flex-md-column bottom-0 end-0 py-3 px-4 p-md-5">
-      <ActionLink to="/" title="Kembali ke Home" iconPath={mdiArrowLeftThick} />
+      <ActionLink to={backTo} title={backTitle} iconPath={mdiArrowLeftThick} />
       <ActionLink to={`/notes/${id}/edit`} title="Edit catatan" iconPath={mdiPencilBox} />
       <ActionButton
         id={id}

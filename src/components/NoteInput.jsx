@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ContentEditable from 'react-contenteditable'
+import ContentEditable from "react-contenteditable"
 import { Link } from "react-router-dom";
 
 export default class NoteInput extends React.Component {

@@ -1,12 +1,11 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { archiveNote, deleteNote, getNote, unarchiveNote } from "../utils/local-data";
-import React from "react";
 import PropTypes from "prop-types";
 import DetailBody from "../components/DetailBody";
 import DetailAction from "../components/DetailAction";
 import PageNotFound from "../pages/PageNotFound";
 
-export default function DetailPageWarapper() {
+export default function DetailPage() {
   const { id } = useParams();
   const note = getNote(id);
   const navigate = useNavigate();
@@ -15,59 +14,40 @@ export default function DetailPageWarapper() {
     return <PageNotFound />;
   }
 
-  return <DetailPage note={note} navigate={navigate} />
-}
-
-class DetailPage extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.handleDelete = this.handleDelete.bind(this);
-    this.handleArchive = this.handleArchive.bind(this);
-    this.handleUnarchive = this.handleUnarchive.bind(this);
-  }
-
-  handleDelete(id) {
+  function handleDelete(id) {
     deleteNote(id);
     // if determine navigate based on note deleted is archive or active note
-    if (this.props.note.archived) {
-      this.props.navigate("/archives");
+    if (note.archived) {
+      navigate("/archives");
     } else {
-      this.props.navigate("/");
+      navigate("/");
     }
   }
 
-  handleArchive(id) {
+  function handleArchive(id) {
     archiveNote(id);
-    this.props.navigate("/");
+    navigate("/");
   }
 
-  handleUnarchive(id) {
+  function handleUnarchive(id) {
     unarchiveNote(id);
-    this.props.navigate("/archives");
+    navigate("/archives");
   }
 
-  render() {
-    return (
-      <article className="detail-page">
-        <DetailBody
-          title={this.props.note.title}
-          body={this.props.note.body}
-          createdAt={this.props.note.createdAt}
-        />
-        <DetailAction
-          id={this.props.note.id}
-          onDelete={this.handleDelete}
-          onArchive={this.handleArchive}
-          onUnarchive={this.handleUnarchive}
-          archived={this.props.note.archived}
-        />
-      </article>
-    );
-  }
+  return (
+    <article className="detail-page">
+      <DetailBody
+        title={note.title}
+        body={note.body}
+        createdAt={note.createdAt}
+      />
+      <DetailAction
+        id={note.id}
+        onDelete={handleDelete}
+        onArchive={handleArchive}
+        onUnarchive={handleUnarchive}
+        archived={note.archived}
+      />
+    </article>
+  );
 }
-
-DetailPage.propTypes = {
-  note: PropTypes.object.isRequired,
-  navigate: PropTypes.func.isRequired
-};

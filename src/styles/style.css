@@ -57,3 +57,9 @@ form [data-placeholder]:empty::before {
   color: rgba(33, 37, 41, 0.75);
   content: attr(data-placeholder);
 }
+
+.note-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 1rem;
+}

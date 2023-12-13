@@ -13,15 +13,13 @@ export default function NoteItem({ id, title, body, createdAt }) {
   }
 
   return (
-    <div className="col-lg-6">
-      <div className="card" onClick={handleClickCard}>
-        <div className="card-body">
-          <h2 className="fs-4">{title}</h2>
-          <time className="text-body-secondary" dateTime={createdAt}>{showFormattedDate(createdAt)}</time>
-          <p className="mt-3 mb-0">{stripedBody.substring(0, 80) + dots}</p>
-        </div>
+    <div className="card" onClick={handleClickCard}>
+      <div className="card-body">
+        <h2 className="fs-4">{title}</h2>
+        <time className="text-body-secondary" dateTime={createdAt}>{showFormattedDate(createdAt)}</time>
+        <p className="mt-3 mb-0">{stripedBody.substring(0, 80) + dots}</p>
       </div>
-    </div> 
+    </div>
   );
 }
 

@@ -14,16 +14,22 @@ time {
   font-size: 0.9em;
 }
 
+div.card {
+  transition: box-shadow 0.2s ease-in;
+}
+
+div.card:hover {
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  z-index: 99;
+}
+
 .card-body h2 {
   margin-bottom: 0;
 }
 
 .card-body h2 a {
   text-decoration: none;
-}
-
-.card-body h2 a:hover {
-  text-decoration: underline;
 }
 
 article.detail-page p {

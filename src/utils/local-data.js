@@ -97,7 +97,7 @@ function editNote({ id, title, body }) {
   const noteToEdit = notes.find((note) => note.id === id);
   noteToEdit.title = title;
   noteToEdit.body = body;
-  noteToEdit.createdAt = +new Date();
+  noteToEdit.createdAt = new Date().toISOString();
 
   notes = notes.map((note) => {
     if (note.id === id) {

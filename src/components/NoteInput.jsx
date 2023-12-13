@@ -47,6 +47,7 @@ export default class NoteInput extends React.Component {
           data-placeholder="Isi Catatan..."
         />
         <button type="submit" className="btn btn-primary">Simpan</button>
+        {/* If in edit page */}
         {this.props.defaultTitle ? (
           <Link to={`/notes/${this.props.id}`} className="ms-2 btn btn-outline-secondary">Batal</Link>
         ) : null}

@@ -2,7 +2,7 @@ import { showFormattedDate } from "../utils";
 import PropTypes from "prop-types";
 import parser from "html-react-parser";
 
-export default function DetailNoteBody({ title, body, createdAt }) {
+export default function DetailBody({ title, body, createdAt }) {
   return (
     <>
       <h1 className="mb-0 fw-bold">{title}</h1>
@@ -17,7 +17,7 @@ export default function DetailNoteBody({ title, body, createdAt }) {
   );
 }
 
-DetailNoteBody.propTypes = {
+DetailBody.propTypes = {
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired

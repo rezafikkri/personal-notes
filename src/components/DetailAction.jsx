@@ -3,8 +3,7 @@ import {
   mdiArchiveArrowDown,
   mdiArchiveArrowUp,
   mdiArrowLeftThick,
-  mdiDelete,
-  mdiPencilBox
+  mdiDelete
 } from "@mdi/js";
 import ActionButton from "./ActionButton";
 import ActionLink from "./ActionLink";
@@ -28,7 +27,6 @@ export default function DetailNoteAction({ id, onDelete, onArchive, onUnarchive,
   return (
     <div className="detail-action position-fixed d-flex flex-md-column bottom-0 end-0 py-3 px-4 p-md-5">
       <ActionLink to={backTo} title={backTitle} iconPath={mdiArrowLeftThick} />
-      <ActionLink to={`/notes/${id}/edit`} title="Edit catatan" iconPath={mdiPencilBox} />
       <ActionButton
         id={id}
         onClick={onArchiveAction}

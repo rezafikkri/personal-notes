@@ -6,7 +6,6 @@ import DetailPage from "./pages/DetailPage";
 import AddPage from "./pages/AddPage";
 import ArchivePage from "./pages/ArchivePage";
 import PageNotFound from "./pages/PageNotFound";
-import EditPage from "./pages/EditPage";
 
 export default function RootLayout() {
   return (
@@ -18,7 +17,6 @@ export default function RootLayout() {
           <Route path="/notes/:id" element={<DetailPage />} />
           <Route path="/notes/new" element={<AddPage />} />
           <Route path="/archives" element={<ArchivePage />} />
-          <Route path="/notes/:id/edit" element={<EditPage />} />
           {/* Default route if no path match */}
           <Route path="*" element={<PageNotFound />} />
         </Routes>

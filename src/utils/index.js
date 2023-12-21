@@ -19,4 +19,10 @@ function stripHtml(htmlString) {
    return tmp.textContent || tmp.innerText || "";
 }
 
-export { showFormattedDate, getPageName, stripHtml };
+function checkConfirmPassword(confirmPassword, password) {
+  if (confirmPassword.length <= 0) return "";
+  if (confirmPassword.length > 0 && confirmPassword !== password) return "is-invalid";
+  return "is-valid";
+}
+
+export { showFormattedDate, getPageName, stripHtml, checkConfirmPassword };

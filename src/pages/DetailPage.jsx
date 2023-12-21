@@ -1,6 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { archiveNote, deleteNote, getNote, unarchiveNote } from "../utils/local-data";
-import PropTypes from "prop-types";
 import DetailBody from "../components/DetailBody";
 import DetailAction from "../components/DetailAction";
 import PageNotFound from "../pages/PageNotFound";
@@ -9,7 +8,7 @@ export default function DetailPage() {
   const { id } = useParams();
   const note = getNote(id);
   const navigate = useNavigate();
-  
+
   if (!note) {
     return <PageNotFound />;
   }

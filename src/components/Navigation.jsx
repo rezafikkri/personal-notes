@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-import Icon from '@mdi/react';
-import { mdiLogout } from '@mdi/js';
 import PropTypes from "prop-types";
 
 export default function Navigation({ onLogout, name }) {

@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import Icon from '@mdi/react';
+import { mdiLogout } from '@mdi/js';
+import PropTypes from "prop-types";
 
-export default function Navigation() {
+export default function Navigation({ onLogout, name }) {
   return (
     <header className="d-flex justify-content-between align-items-center pb-3 mb-5 border-bottom">
       <Link
@@ -16,7 +19,26 @@ export default function Navigation() {
         <li className="nav-item">
           <Link className="nav-link" to="/notes/new">Buat Catatan</Link>
         </li>
+        <li className="nav-item">
+          <a
+            className="nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+            href="#"
+            role="button"
+            aria-expanded="false"
+          >{name}</a>
+          <ul className="dropdown-menu dropdown-menu-lg-end">
+            <li>
+              <button className="dropdown-item" onClick={onLogout}>Keluar</button>
+            </li>
+          </ul>
+        </li>
       </ul>
     </header>
   );
 }
+
+Navigation.propTypes = {
+  onLogout: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired
+};

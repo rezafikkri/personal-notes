@@ -64,7 +64,7 @@ export default function RegisterInput({ onRegister }) {
           onChange={handleConfirmPasswordChange}
         />
         <label htmlFor="confirm-password">Konfirmasi Password</label>
-        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+        <div id="validationServerUsernameFeedback" className="invalid-feedback">
           Password tidak sama
         </div>
       </div>

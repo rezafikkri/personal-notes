@@ -10,13 +10,12 @@ export default function RegisterPage() {
 
   async function handleRegister(user) {
     setLoading(true);
-
     const { error } = await register(user);
+    setLoading(false);
+
     if (!error) {
       navigate("/");
     }
-
-    setLoading(false);
   }
 
   return (

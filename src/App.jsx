@@ -1,6 +1,12 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { getUserLogged, putAccessToken } from "./utils/network-data";
-import useAuth from "./hooks/useAuth";
+import {
+  getAuthedUser,
+  getUserLogged,
+  putAccessToken,
+  putAuthedUser,
+  removeAuthedUser
+} from "./utils/network-data";
+import { useState } from "react";
 
 import HomePage from "./pages/HomePage";
 import DetailPage from "./pages/DetailPage";
@@ -12,22 +18,24 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 
 export default function App() {
-  const [auth, setAuth] = useAuth();
+  const [authedUser, setAuthedUser] = useState(getAuthedUser());
   const navigate = useNavigate();
 
   async function loginSuccess({ accessToken }) {
     putAccessToken(accessToken);
     const { data } = await getUserLogged();
-    setAuth(data);
+    putAuthedUser(data);
+    setAuthedUser(data);
   }
 
   function handleLogout() {
-    setAuth(null);
-    putAccessToken('');
+    setAuthedUser(null);
+    putAccessToken("");
+    removeAuthedUser();
     navigate("/");
   }
 
-  if (auth === null) {
+  if (authedUser === null) {
     return (
       <Routes>
         <Route path="/*" element={<LoginPage loginSuccess={loginSuccess} />} />
@@ -38,7 +46,7 @@ export default function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Layout onLogout={handleLogout} name={auth.name} />}>
+      <Route path="/" element={<Layout onLogout={handleLogout} name={authedUser.name} />}>
         <Route index element={<HomePage />} />
         <Route path="/notes/:id" element={<DetailPage />} />
         <Route path="/notes/new" element={<AddPage />} />

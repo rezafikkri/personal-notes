@@ -1,6 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { getNote, deleteNote } from "../utils/network-data";
-import { archiveNote, unarchiveNote } from "../utils/local-data";
+import { getNote, deleteNote, archiveNote, unarchiveNote } from "../utils/network-data";
 import DetailBody from "../components/DetailBody";
 import DetailAction from "../components/DetailAction";
 import PageNotFound from "../pages/PageNotFound";
@@ -39,8 +38,11 @@ export default function DetailPage() {
     }
   }
 
-  function handleArchive(id) {
-    archiveNote(id);
+  async function handleArchive(id) {
+    setActionType("archive");
+    await archiveNote(id);
+    setActionType("archive");
+
     navigate("/");
   }
 

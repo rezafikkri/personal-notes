@@ -5,7 +5,7 @@ import { getPageName } from "../utils";
 import NoteItemLoading from "./NoteItemLoading";
 
 export default function NoteList({ notes, isLoading }) {
-  if (isLoading) return <NoteItemLoading />;
+  if (isLoading) return <div className="note-list"><NoteItemLoading /></div>;
 
   const location = useLocation();
   const pageName = getPageName(location);

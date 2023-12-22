@@ -8,7 +8,14 @@ import {
 import ActionButton from "./ActionButton";
 import ActionLink from "./ActionLink";
 
-export default function DetailNoteAction({ id, onDelete, onArchive, onUnarchive, archived }) {
+export default function DetailNoteAction({
+  id,
+  onDelete,
+  onArchive,
+  onUnarchive,
+  archived,
+  actionType
+}) {
   /* Determine the buttons displayed and to, title attr link for 'back to',
   based on the active or archived note page */
   let onArchiveAction = onArchive;
@@ -33,6 +40,8 @@ export default function DetailNoteAction({ id, onDelete, onArchive, onUnarchive,
         btnClass="btn-outline-secondary me-5 me-md-0 mb-md-5"
         iconPath={archiveIcon}
         title={archiveTitle}
+        actionType={actionType}
+        actionBtnType="archive"
       />
       <ActionButton
         id={id}
@@ -40,6 +49,8 @@ export default function DetailNoteAction({ id, onDelete, onArchive, onUnarchive,
         btnClass="btn-outline-danger"
         iconPath={mdiDelete}
         title="Delete arsip"
+        actionType={actionType}
+        actionBtnType="delete"
       />
     </div>
   );
@@ -50,5 +61,6 @@ DetailNoteAction.propTypes = {
   onDelete: PropTypes.func.isRequired,
   onArchive: PropTypes.func.isRequired,
   onUnarchive: PropTypes.func.isRequired,
-  archived: PropTypes.bool.isRequired
+  archived: PropTypes.bool.isRequired,
+  actionType: PropTypes.string.isRequired
 };

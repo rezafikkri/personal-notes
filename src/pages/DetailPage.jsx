@@ -10,8 +10,9 @@ import DetailLoading from "../components/DetailLoading";
 export default function DetailPage() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [isLoading, setLoading] = useState(true);
   const [note, setNote] = useState(null);
+  const [isLoading, setLoading] = useState(true);
+  const [actionType, setActionType] = useState("");
 
   useEffect(() => {
     async function fetchNote() {
@@ -27,7 +28,9 @@ export default function DetailPage() {
   }, []);
 
   async function handleDelete(id) {
+    setActionType("delete");
     await deleteNote(id);
+    setActionType("");
     // if determine navigate based on note deleted is archive or active note
     if (note.archived) {
       navigate("/archives");
@@ -67,6 +70,7 @@ export default function DetailPage() {
         onArchive={handleArchive}
         onUnarchive={handleUnarchive}
         archived={note.archived}
+        actionType={actionType}
       />
     </article>
   );

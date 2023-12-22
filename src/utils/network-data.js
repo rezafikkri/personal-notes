@@ -160,6 +160,13 @@ async function deleteNote(id) {
   return { error: false, data: responseJson.data };
 }
 
+function searchNotes(notes, keyword) {
+  return notes.filter(note => {
+    const lowerKeyword = keyword.toLowerCase();
+    return note.title.toLowerCase().includes(lowerKeyword);
+  });
+}
+
 export {
   getAccessToken,
   putAccessToken,
@@ -173,4 +180,5 @@ export {
   archiveNote,
   unarchiveNote,
   deleteNote,
+  searchNotes,
 };

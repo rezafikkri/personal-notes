@@ -2,8 +2,11 @@ import { useLocation } from "react-router-dom";
 import NoteItem from "./NoteItem";
 import PropTypes from "prop-types";
 import { getPageName } from "../utils";
+import NoteItemLoading from "./NoteItemLoading";
 
-export default function NoteList({ notes }) {
+export default function NoteList({ notes, isLoading }) {
+  if (isLoading) return <NoteItemLoading />;
+
   const location = useLocation();
   const pageName = getPageName(location);
   // message for if not found notes data
@@ -28,4 +31,5 @@ export default function NoteList({ notes }) {
 
 NoteList.propTypes = {
   notes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  isLoading: PropTypes.bool.isRequired
 };

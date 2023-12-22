@@ -18,7 +18,7 @@ div.card {
   transition: box-shadow 0.2s ease-in;
 }
 
-div.card:hover {
+div.card:hover:not(.loading) {
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
   z-index: 99;

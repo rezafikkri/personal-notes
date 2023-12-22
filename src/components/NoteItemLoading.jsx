@@ -1,7 +1,7 @@
 export default function NoteItemLoading() {
   return (
     <>
-      <div className="card loading" aria-hidden="true">
+      <div className="card loading">
         <div className="card-body">
           <h2 className="card-title placeholder-glow">
             <span className="placeholder col-6"></span>

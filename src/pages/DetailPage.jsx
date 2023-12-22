@@ -1,20 +1,33 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { archiveNote, deleteNote, getNote, unarchiveNote } from "../utils/local-data";
+import { getNote, deleteNote } from "../utils/network-data";
+import { archiveNote, unarchiveNote } from "../utils/local-data";
 import DetailBody from "../components/DetailBody";
 import DetailAction from "../components/DetailAction";
 import PageNotFound from "../pages/PageNotFound";
+import { useEffect, useState } from "react";
+import DetailLoading from "../components/DetailLoading";
 
 export default function DetailPage() {
   const { id } = useParams();
-  const note = getNote(id);
   const navigate = useNavigate();
+  const [isLoading, setLoading] = useState(true);
+  const [note, setNote] = useState(null);
 
-  if (!note) {
-    return <PageNotFound />;
-  }
+  useEffect(() => {
+    async function fetchNote() {
+      const { error, data } = await getNote(id);
+      if (!error) {
+        setNote(data);
+      }
 
-  function handleDelete(id) {
-    deleteNote(id);
+      setLoading(false);
+    }
+
+    fetchNote();
+  }, []);
+
+  async function handleDelete(id) {
+    await deleteNote(id);
     // if determine navigate based on note deleted is archive or active note
     if (note.archived) {
       navigate("/archives");
@@ -31,6 +44,14 @@ export default function DetailPage() {
   function handleUnarchive(id) {
     unarchiveNote(id);
     navigate("/archives");
+  }
+
+  if (!note && isLoading) {
+    return <DetailLoading />;
+  }
+
+  if (!note && !isLoading) {
+    return <PageNotFound />;
   }
 
   return (

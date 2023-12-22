@@ -58,6 +58,10 @@ form [data-placeholder]:empty::before {
   content: attr(data-placeholder);
 }
 
+div.form-control[disabled] {
+  background-color: #e9ecef;
+}
+
 .note-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));

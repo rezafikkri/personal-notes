@@ -1,7 +1,7 @@
 import useInput from "../hooks/useInput";
 import PropTypes from "prop-types";
 
-export default function LoginInput({ onLogin }) {
+export default function LoginInput({ onLogin, isLoading }) {
   const [email, setEmail] = useInput('');
   const [password, setPassword] = useInput('');
 
@@ -24,6 +24,7 @@ export default function LoginInput({ onLogin }) {
           placeholder="name@example.com"
           value={email}
           onChange={setEmail}
+          disabled={isLoading}
         />
         <label htmlFor="email">Email address</label>
       </div>
@@ -35,14 +36,20 @@ export default function LoginInput({ onLogin }) {
           placeholder="Password"
           value={password}
           onChange={setPassword}
+          disabled={isLoading}
         />
         <label htmlFor="password">Password</label>
       </div>
-      <button type="submit" className="w-100 py-2 btn btn-primary mb-3">Masuk</button>
+      <button type="submit" className="w-100 py-2 btn btn-primary mb-3" disabled={isLoading}>
+        {isLoading ? (
+          <span className="spinner-border spinner-border-sm"></span>
+        ) : "Masuk" }
+      </button>
     </form>
   );
 }
 
 LoginInput.propTypes = {
-  onLogin: PropTypes.func.isRequired
+  onLogin: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired
 };

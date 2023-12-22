@@ -2,7 +2,7 @@ import useInput from "../hooks/useInput";
 import PropTypes from "prop-types";
 import { checkConfirmPassword } from "../utils";
 
-export default function RegisterInput({ onRegister }) {
+export default function RegisterInput({ onRegister, isLoading }) {
   const [name, handleNameChange] = useInput("");
   const [email, handleEmailChange] = useInput("");
   const [password, handlePasswordChange] = useInput("");
@@ -28,6 +28,7 @@ export default function RegisterInput({ onRegister }) {
           placeholder="..."
           value={name}
           onChange={handleNameChange}
+          disabled={isLoading}
         />
         <label htmlFor="name">Nama</label>
       </div>
@@ -39,6 +40,7 @@ export default function RegisterInput({ onRegister }) {
           placeholder="name@example.com"
           value={email}
           onChange={handleEmailChange}
+          disabled={isLoading}
         />
         <label htmlFor="email">Email</label>
       </div>
@@ -51,6 +53,7 @@ export default function RegisterInput({ onRegister }) {
           placeholder="..."
           value={password}
           onChange={handlePasswordChange}
+          disabled={isLoading}
         />
         <label htmlFor="password">Password</label>
       </div>
@@ -62,17 +65,23 @@ export default function RegisterInput({ onRegister }) {
           placeholder="..."
           value={confirmPassword}
           onChange={handleConfirmPasswordChange}
+          disabled={isLoading}
         />
         <label htmlFor="confirm-password">Konfirmasi Password</label>
         <div id="validationServerUsernameFeedback" className="invalid-feedback">
           Password tidak sama
         </div>
       </div>
-      <button type="submit" className="w-100 py-2 btn btn-primary mb-3">Daftar</button>
+      <button type="submit" className="w-100 py-2 btn btn-primary mb-3" disabled={isLoading}>
+        {isLoading ? (
+          <span className="spinner-border spinner-border-sm"></span>
+        ) : "Daftar" }
+      </button>
     </form>
   );
 }
 
 RegisterInput.propTypes = {
-  onRegister: PropTypes.func.isRequired
+  onRegister: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired
 };

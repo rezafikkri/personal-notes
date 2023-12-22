@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import NoteInput from "../components/NoteInput";
 import { addNote } from "../utils/network-data";
-import SpinnerLoading from "../components/SpinnerLoading";
 import { useState } from "react";
 
 export default function AddPage() {
@@ -18,9 +17,7 @@ export default function AddPage() {
   return (
     <section className="position-relative">
       <h1>Buat Catatan</h1>
-      <NoteInput onSubmit={handleAdd} />
-
-      <SpinnerLoading isLoading={isLoading} />
+      <NoteInput onSubmit={handleAdd} isLoading={isLoading} />
     </section>
   );
 }

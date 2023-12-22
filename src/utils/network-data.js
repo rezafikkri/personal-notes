@@ -10,7 +10,7 @@ function putAccessToken(accessToken) {
 
 function getAuthedUser() {
   let user = localStorage.getItem("authedUser");
-  return user ?? JSON.parse(user);
+  return user !== null ? JSON.parse(user) : null;
 }
 
 function putAuthedUser(user) {

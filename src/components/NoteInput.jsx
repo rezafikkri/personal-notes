@@ -1,59 +1,39 @@
-import React from "react";
 import PropTypes from "prop-types";
 import ContentEditable from "react-contenteditable"
 import { Link } from "react-router-dom";
+import useInput from "../hooks/useInput";
 
-export default class NoteInput extends React.Component {
-  constructor(props) {
-    super(props);
+export default function NoteInput({ onSubmit, id, defaultTitle, defaultBody }) {
+  const [title, handleTitleChange] = useInput(defaultTitle ?? "");
+  const [body, handleBodyChange] = useInput(defaultBody ?? "");
 
-    this.state = {
-      title: props.defaultTitle ?? "",
-      body: props.defaultBody ?? ""
-    };
-
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChangeTitle = this.handleChangeTitle.bind(this);
-    this.handleChangeBody = this.handleChangeBody.bind(this);
-  }
-
-  handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-    this.props.onSubmit(this.state);
+    onSubmit({ title, body });
   }
 
-  handleChangeTitle(e) {
-    this.setState({ title: e.target.value });
-  }
-
-  handleChangeBody(e) {
-    this.setState({ body: e.target.value });
-  }
-
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          className="form-control mb-2"
-          type="text"
-          placeholder="Judul Catatan..."
-          onChange={this.handleChangeTitle}
-          value={this.state.title}
-        />
-        <ContentEditable
-          className="form-control mb-3"
-          html={this.state.body}
-          onChange={this.handleChangeBody}
-          data-placeholder="Isi Catatan..."
-        />
-        <button type="submit" className="btn btn-primary">Simpan</button>
-        {/* If in edit page */}
-        {this.props.defaultTitle ? (
-          <Link to={`/notes/${this.props.id}`} className="ms-2 btn btn-outline-secondary">Batal</Link>
-        ) : null}
-      </form>
-    );
-  }
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        className="form-control mb-2"
+        type="text"
+        placeholder="Judul Catatan..."
+        onChange={handleTitleChange}
+        value={title}
+      />
+      <ContentEditable
+        className="form-control mb-3"
+        html={body}
+        onChange={handleBodyChange}
+        data-placeholder="Isi Catatan..."
+      />
+      <button type="submit" className="btn btn-primary">Simpan</button>
+      {/* If in edit page */}
+      {defaultTitle ? (
+        <Link to={`/notes/${id}`} className="ms-2 btn btn-outline-secondary">Batal</Link>
+      ) : null}
+    </form>
+  );
 }
 
 NoteInput.propTypes = {

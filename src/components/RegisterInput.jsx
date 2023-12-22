@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import { checkConfirmPassword } from "../utils";
 
 export default function RegisterInput({ onRegister }) {
-  const [name, handleNameChange] = useInput('');
-  const [email, handleEmailChange] = useInput('');
-  const [password, handlePasswordChange] = useInput('');
-  const [confirmPassword, handleConfirmPasswordChange] = useInput('');
+  const [name, handleNameChange] = useInput("");
+  const [email, handleEmailChange] = useInput("");
+  const [password, handlePasswordChange] = useInput("");
+  const [confirmPassword, handleConfirmPasswordChange] = useInput("");
 
   function handleSubmit(e) {
     e.preventDefault();

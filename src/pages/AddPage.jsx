@@ -16,7 +16,7 @@ export default function AddPage() {
 
   return (
     <section className="position-relative">
-      <h1>Buat Catatan</h1>
+      <h1 className="text-body">Buat Catatan</h1>
       <NoteInput onSubmit={handleAdd} isLoading={isLoading} />
     </section>
   );

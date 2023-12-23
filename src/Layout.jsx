@@ -1,14 +1,20 @@
 import { Outlet } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import PropTypes from "prop-types";
+import { useContext } from "react";
+import ThemeContext from "./contexts/ThemeContext";
 
 export default function Layout(props) {
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <div className="col-md-8 mx-auto px-4 py-5">
+    <div data-bs-theme={theme} className="min-vh-100 bg-body-tertiary">
       <Navigation {...props} />
-      <main>
-        <Outlet />
-      </main>
+      <div className="col-md-8 mx-auto px-4 py-5">
+        <main>
+          <Outlet />
+        </main>
+      </div>
     </div>
   );
 }

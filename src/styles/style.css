@@ -2,14 +2,6 @@ body {
   font-family: "Rethink Sans", sans-serif;
 }
 
-ul.nav .nav-link {
-  color: rgba(0, 0, 0, 0.65);
-}
-
-ul.nav .nav-link:hover {
-  color: rgba(0, 0, 0, 0.9);
-}
-
 time {
   font-size: 0.9em;
 }
@@ -43,7 +35,7 @@ article.detail-page p {
   }
 }
 
-main svg {
+.btn-sm svg {
   vertical-align: bottom !important;
 }
 
@@ -53,8 +45,12 @@ form [data-placeholder] {
   resize: vertical;
 }
 
+form [data-placeholder]:hover {
+  cursor: text;
+}
+
 form [data-placeholder]:empty::before {
-  color: rgba(33, 37, 41, 0.75);
+  color: var(--bs-secondary-color);
   content: attr(data-placeholder);
 }
 
@@ -68,11 +64,11 @@ div.form-control[disabled] {
   grid-gap: 1rem;
 }
 
-.loading {
-  background-color: rgba(255, 255, 255, 0.65);
-}
-
 .login {
   max-width: 330px;
   padding: 1rem;
+}
+
+.form-floating .form-control ~ label {
+  color: var(--bs-body-color);
 }

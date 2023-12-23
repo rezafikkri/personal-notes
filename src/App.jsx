@@ -66,9 +66,9 @@ export default function App() {
           <Route path="/notes/:id" element={<DetailPage />} />
           <Route path="/notes/new" element={<AddPage />} />
           <Route path="/archives" element={<ArchivePage />} />
+          {/* Default route if no path match */}
+          <Route path="*" element={<PageNotFound />} />
         </Route>
-        {/* Default route if no path match */}
-        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </ThemeContextProvider>
   );

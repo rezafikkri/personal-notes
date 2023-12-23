@@ -5,14 +5,14 @@ import parser from "html-react-parser";
 export default function DetailBody({ title, body, createdAt }) {
   return (
     <>
-      <h1 className="mb-0 fw-bold">{title}</h1>
+      <h1 className="text-body mb-0 fw-bold">{title}</h1>
       <time
         className="text-body-secondary"
         dateTime={createdAt}
       >
         {showFormattedDate(createdAt)}
       </time>
-      <div className="mt-3 mb-5">{parser(body)}</div>
+      <div className="text-body mt-3 mb-5">{parser(body)}</div>
     </>
   );
 }

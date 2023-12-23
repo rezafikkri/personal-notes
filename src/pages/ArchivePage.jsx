@@ -30,9 +30,9 @@ export default function ArchivePage() {
 
   return (
     <>
-      <h1 className="fw-bold">Catatan Arsip</h1>
+      <h1 className="text-body fw-bold">Catatan Arsip</h1>
       <SearchNotes keyword={keyword} onKeywordChange={handleKeywordChange} />
-      <hr className="col-3 col-md-2 mb-5"/>
+      <hr className="col-3 col-md-2 mb-5 border-secondary"/>
       <NoteList notes={searchNotes(notes, keyword)} isLoading={isLoading} />
     </>
   );

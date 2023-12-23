@@ -1,11 +1,10 @@
 import PropTypes from "prop-types";
 import ContentEditable from "react-contenteditable"
-import { Link } from "react-router-dom";
 import useInput from "../hooks/useInput";
 
-export default function NoteInput({ onSubmit, id, defaultTitle, defaultBody, isLoading }) {
-  const [title, handleTitleChange] = useInput(defaultTitle ?? "");
-  const [body, handleBodyChange] = useInput(defaultBody ?? "");
+export default function NoteInput({ onSubmit, isLoading }) {
+  const [title, handleTitleChange] = useInput("");
+  const [body, handleBodyChange] = useInput("");
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -34,18 +33,11 @@ export default function NoteInput({ onSubmit, id, defaultTitle, defaultBody, isL
           <span className="spinner-border spinner-border-sm"></span>
         ) : "Simpan" }
       </button>
-      {/* If in edit page */}
-      {defaultTitle ? (
-        <Link to={`/notes/${id}`} className="ms-2 btn btn-outline-secondary">Batal</Link>
-      ) : null}
     </form>
   );
 }
 
 NoteInput.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  id: PropTypes.string,
-  defaultTitle: PropTypes.string,
-  defaultBody: PropTypes.string,
   isLoading: PropTypes.bool.isRequired
 };

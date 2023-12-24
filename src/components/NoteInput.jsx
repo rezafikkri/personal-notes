@@ -1,10 +1,14 @@
 import PropTypes from "prop-types";
 import ContentEditable from "react-contenteditable"
 import useInput from "../hooks/useInput";
+import { useContext } from "react";
+import LocaleContext from "../contexts/LocaleContext";
+import { translate } from "../utils";
 
 export default function NoteInput({ onSubmit, isLoading }) {
   const [title, handleTitleChange] = useInput("");
   const [body, handleBodyChange] = useInput("");
+  const { locale } = useContext(LocaleContext);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -16,22 +20,21 @@ export default function NoteInput({ onSubmit, isLoading }) {
       <input
         className="form-control mb-2"
         type="text"
-        placeholder="Judul Catatan..."
+        placeholder={`${translate(locale, "Judul catatan", "Note title")}...`}
         onChange={handleTitleChange}
         value={title}
         disabled={isLoading}
       />
       <ContentEditable
-        className="form-control mb-3"
+        className={`form-control mb-3 ${locale}`}
         html={body}
         onChange={handleBodyChange}
-        data-placeholder="Isi Catatan..."
         disabled={isLoading}
       />
       <button type="submit" className="btn btn-primary" disabled={isLoading}>
         {isLoading ? (
           <span className="spinner-border spinner-border-sm"></span>
-        ) : "Simpan" }
+        ) : translate(locale, "Simpan", "Save") }
       </button>
     </form>
   );

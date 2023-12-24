@@ -39,23 +39,34 @@ article.detail-page p {
   vertical-align: bottom !important;
 }
 
-form [data-placeholder] {
+form [contenteditable] {
   overflow: auto;
   height: 300px;
   resize: vertical;
 }
 
-form [data-placeholder]:hover {
+form [contenteditable]:empty::before {
+  color: var(--bs-secondary-color);
+}
+
+form .id[contenteditable]:empty::before {
+  content: "Isi catatan...";
+}
+
+form .en[contenteditable]:empty::before {
+  content: "Note content...";
+}
+
+form [contenteditable]:hover {
   cursor: text;
 }
 
-form [data-placeholder]:empty::before {
-  color: var(--bs-secondary-color);
-  content: attr(data-placeholder);
+form [contenteditable][disabled] {
+  background-color: var(--bs-secondary-bg);
 }
 
-div.form-control[disabled] {
-  background-color: #e9ecef;
+form [contenteditable][disabled]:hover {
+  cursor: default;
 }
 
 .note-list {

@@ -25,4 +25,14 @@ function checkConfirmPassword(confirmPassword, password) {
   return "is-valid";
 }
 
-export { showFormattedDate, getPageName, stripHtml, checkConfirmPassword };
+function translate(locale, id, en) {
+  return locale === "id" ? id : en;
+}
+
+export {
+  showFormattedDate,
+  getPageName,
+  stripHtml,
+  checkConfirmPassword,
+  translate
+};

@@ -7,6 +7,9 @@ import {
 } from "@mdi/js";
 import ActionButton from "./ActionButton";
 import ActionLink from "./ActionLink";
+import { useContext } from "react";
+import LocaleContext from "../contexts/LocaleContext";
+import { translate } from "../utils";
 
 export default function DetailNoteAction({
   id,
@@ -16,19 +19,21 @@ export default function DetailNoteAction({
   archived,
   actionType
 }) {
+  const { locale } = useContext(LocaleContext);
+
   /* Determine the buttons displayed and to, title attr link for 'back to',
   based on the active or archived note page */
   let onArchiveAction = onArchive;
   let archiveIcon = mdiArchiveArrowDown;
-  let archiveTitle = "Arsip catatan";
+  let archiveTitle = translate(locale, "Arsip catatan", "Archive note");
   let backTo = "/";
-  let backTitle = "Kembali ke Home";
+  let backTitle = translate(locale, "Kembali ke Home", "Back to Home");
   if (archived) {
     onArchiveAction = onUnarchive;
     archiveIcon = mdiArchiveArrowUp;
-    archiveTitle = "Batalkan arsip";
+    archiveTitle = translate(locale, "Batalkan arsip", "Unarchive");
     backTo = "/archives";
-    backTitle = "Kembali ke Arsip";
+    backTitle = translate(locale, "Kembali ke Arsip", "Back to Archive");
   }
 
   return (
@@ -48,7 +53,7 @@ export default function DetailNoteAction({
         onClick={onDelete}
         btnClass="btn-outline-danger"
         iconPath={mdiDelete}
-        title="Delete arsip"
+        title={translate(locale, "Hapus arsip", "Delete archive")}
         actionType={actionType}
         actionBtnType="delete"
       />

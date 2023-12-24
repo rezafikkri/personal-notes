@@ -6,8 +6,9 @@ import {
   putAuthedUser,
   removeAuthedUser
 } from "./utils/network-data";
-import { useMemo, useState } from "react";
-import { ThemeContextProvider } from "./contexts/ThemeContext";
+import { useEffect, useMemo, useState } from "react";
+import { ThemeProvider } from "./contexts/ThemeContext";
+import { LocaleProvider } from "./contexts/LocaleContext";
 
 import HomePage from "./pages/HomePage";
 import DetailPage from "./pages/DetailPage";
@@ -17,11 +18,17 @@ import PageNotFound from "./pages/PageNotFound";
 import Layout from "./Layout";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import { translate } from "./utils";
 
 export default function App() {
   const [authedUser, setAuthedUser] = useState(getAuthedUser());
   const [theme, setTheme] = useState(localStorage.getItem("theme") ?? "light");
+  const [locale, setLocale] = useState(localStorage.getItem("locale") ?? "id");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.title = translate(locale, "Aplikasi Catatan", "Notes App");
+  }, [locale]);
 
   async function loginSuccess({ accessToken }) {
     putAccessToken(accessToken);
@@ -45,21 +52,33 @@ export default function App() {
     });
   }
 
+  function toggleLocale() {
+    setLocale((prevLocale) => {
+      const locale = prevLocale === "id" ? "en" : "id";
+      localStorage.setItem("locale", locale);
+      return locale;
+    });
+  }
+
   const themeContextValue = useMemo(() => ({ theme, toggleTheme }), [theme]);
+  const localeContextValue = useMemo(() => ({ locale, toggleLocale }), [locale]);
 
   if (authedUser === null) {
     return (
-      <ThemeContextProvider value={themeContextValue}>
+      <LocaleProvider value={localeContextValue}>
+      <ThemeProvider value={themeContextValue}>
         <Routes>
           <Route path="/*" element={<LoginPage loginSuccess={loginSuccess} />} />
           <Route path="/register" element={<RegisterPage />} />
         </Routes>
-      </ThemeContextProvider>
+      </ThemeProvider>
+      </LocaleProvider>
     );
   }
 
   return (
-    <ThemeContextProvider value={themeContextValue}>
+    <LocaleProvider value={localeContextValue}>
+    <ThemeProvider value={themeContextValue}>
       <Routes>
         <Route path="/" element={<Layout onLogout={handleLogout} name={authedUser.name} />}>
           <Route index element={<HomePage />} />
@@ -70,6 +89,7 @@ export default function App() {
           <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
-    </ThemeContextProvider>
+    </ThemeProvider>
+    </LocaleProvider>
   );
 }

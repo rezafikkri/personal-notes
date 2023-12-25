@@ -19,12 +19,6 @@ function stripHtml(htmlString) {
    return tmp.textContent || tmp.innerText || "";
 }
 
-function checkConfirmPassword(confirmPassword, password) {
-  if (confirmPassword.length <= 0) return "";
-  if (confirmPassword.length > 0 && confirmPassword !== password) return "is-invalid";
-  return "is-valid";
-}
-
 function translate(locale, id, en) {
   return locale === "id" ? id : en;
 }
@@ -33,6 +27,5 @@ export {
   showFormattedDate,
   getPageName,
   stripHtml,
-  checkConfirmPassword,
   translate
 };

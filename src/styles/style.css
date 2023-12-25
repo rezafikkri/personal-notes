@@ -45,6 +45,11 @@ form [contenteditable] {
   resize: vertical;
 }
 
+form [contenteditable].is-invalid {
+  padding-right: calc(1.5em + 0.75rem);
+  background-position: top calc(0.375em + 0.1875rem) right calc(0.375em + 0.1875rem);
+}
+
 form [contenteditable]:empty::before {
   color: var(--bs-secondary-color);
 }

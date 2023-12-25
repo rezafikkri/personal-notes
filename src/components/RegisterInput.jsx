@@ -1,7 +1,7 @@
 import useInput from "../hooks/useInput";
 import PropTypes from "prop-types";
 import { translate } from "../utils";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import LocaleContext from "../contexts/LocaleContext";
 import {
   validateConfirmPassword,

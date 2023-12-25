@@ -21,7 +21,7 @@ import RegisterPage from "./pages/RegisterPage";
 import { translate } from "./utils";
 
 export default function App() {
-  const [authedUser, setAuthedUser] = useState(getAuthedUser());
+  const [authedUser, setAuthedUser] = useState(() => getAuthedUser());
   const [theme, setTheme] = useState(localStorage.getItem("theme") ?? "light");
   const [locale, setLocale] = useState(localStorage.getItem("locale") ?? "id");
   const navigate = useNavigate();
@@ -33,6 +33,7 @@ export default function App() {
   async function loginSuccess({ accessToken }) {
     putAccessToken(accessToken);
     const { data } = await getUserLogged();
+    // put authed user to localstorage
     putAuthedUser(data);
     setAuthedUser(data);
   }

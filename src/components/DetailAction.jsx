@@ -53,7 +53,7 @@ export default function DetailNoteAction({
         onClick={onDelete}
         btnClass="btn-outline-danger"
         iconPath={mdiDelete}
-        title={translate(locale, "Hapus arsip", "Delete archive")}
+        title={translate(locale, "Hapus catatan", "Delete note")}
         actionType={actionType}
         actionBtnType="delete"
       />

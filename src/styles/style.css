@@ -36,7 +36,7 @@ article.detail-page p {
 }
 
 .btn-sm svg {
-  vertical-align: bottom !important;
+  vertical-align: top !important;
 }
 
 form [contenteditable] {

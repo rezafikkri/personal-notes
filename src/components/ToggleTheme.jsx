@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import ThemeContext from "../contexts/ThemeContext";
-import Icon from '@mdi/react';
-import { mdiWhiteBalanceSunny, mdiBrightness2 } from '@mdi/js';
+import Icon from "@mdi/react";
+import { mdiWhiteBalanceSunny, mdiBrightness2 } from "@mdi/js";
 
 export default function ToggleTheme() {
   const { theme, toggleTheme } = useContext(ThemeContext);

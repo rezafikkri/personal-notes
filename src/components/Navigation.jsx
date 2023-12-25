@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import { useContext } from "react";
 import ThemeContext from "../contexts/ThemeContext";
 import LocaleContext from "../contexts/LocaleContext";
-import Icon from '@mdi/react';
-import { mdiWhiteBalanceSunny, mdiBrightness2 } from '@mdi/js';
+import Icon from "@mdi/react";
+import { mdiWhiteBalanceSunny, mdiBrightness2 } from "@mdi/js";
 import { translate } from "../utils";
 
 export default function Navigation({ onLogout, name }) {

@@ -5,8 +5,8 @@ import LocaleContext from "../contexts/LocaleContext";
 import { translate } from "../utils";
 
 export default function LoginInput({ onLogin, isLoading }) {
-  const [email, setEmail] = useInput('');
-  const [password, setPassword] = useInput('');
+  const [email, setEmail] = useInput("");
+  const [password, setPassword] = useInput("");
   const { locale } = useContext(LocaleContext);
 
   function handleSubmit(e) {

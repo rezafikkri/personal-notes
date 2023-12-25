@@ -22,7 +22,7 @@ import { translate } from "./utils";
 
 export default function App() {
   const [authedUser, setAuthedUser] = useState(() => getAuthedUser());
-  const [theme, setTheme] = useState(localStorage.getItem("theme") ?? "light");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") ?? "dark");
   const [locale, setLocale] = useState(localStorage.getItem("locale") ?? "id");
   const navigate = useNavigate();
 

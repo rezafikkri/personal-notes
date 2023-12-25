@@ -18,6 +18,6 @@ export default function SearchNotes({ keyword, onKeywordChange }) {
 }
 
 SearchNotes.propTypes = {
-  keyword: PropTypes.string,
+  keyword: PropTypes.string.isRequired,
   onKeywordChange: PropTypes.func.isRequired
 };
